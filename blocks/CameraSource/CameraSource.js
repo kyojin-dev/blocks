@@ -111,6 +111,9 @@ export class CameraSource extends UploaderBlock {
   async _capture() {
     let constr = {
       video: {
+        facingMode: {
+          exact: "environment"
+        },
         width: {
           ideal: 1920,
         },
@@ -123,11 +126,7 @@ export class CameraSource extends UploaderBlock {
       },
       audio: false,
     };
-    if (this._selectedCameraId) {
-      constr.video.deviceId = {
-        exact: this._selectedCameraId,
-      };
-    }
+
     /** @private */
     this._canvas = document.createElement('canvas');
     /** @private */
